@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<h1>Carrito de compras</h1>
+<div class="container mt-4">
+    <form action="/agregar" method="post">
+        <select name="producto" id="">
+            <option value="">Seleccione un producto</option>
+            <option value="arroz">arroz</option>
+            <option value="frijoles">frijoles</option>
+            <option value="lentejas">lentejas</option>
+            <option value="azucar">azucar</option>
+            <option value="leche">leche</option>
+            <option value="miel">miel</option>
+        </select>
+        <input type="number" name="cantidad" placeholder="cantidad">
+        <input type="submit" value="Agregar">
+    </form>
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        {%for p in carrito%}
+        <tbody>
+            <tr>
+                <th scope="row">{{p.producto}}</th>
+                <td>{{p.precio}}</td>
+                <td>{{p.cantidad}}</td>
+                <td>{{p.total}}</td>
+            </tr>
+
+        </tbody>
+        {%endfor%}
+        <tr>
+            <th style="background-color: rgb(255, 255, 196); color: rgb(0, 0, 0);">Precio total: </th>
+            <td style="background-color: rgb(255, 255, 196); color: rgb(0, 0, 0);"></td>
+            <td style="background-color: rgb(255, 255, 196); color: rgb(0, 0, 0);"></td>
+            <th style="background-color: rgb(255, 255, 196); color: rgb(0, 0, 0);">{{total_total}}</th>
+        </tr>
+    </table>
+
+
+    <a href="/vaciar">vaciar carrito</a>
+</div>
+
+{%endblock%}
