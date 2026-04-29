@@ -4,7 +4,7 @@ app = Flask(__name__)
 app.secret_key = "8350e5a3e24c153df2275c9f80692773"
 
 
-@app.route("/verproducto")
+@app.route("/")
 def home():
     carrito = session.get("carrito", [])
     total_total = 0
